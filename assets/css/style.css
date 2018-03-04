@@ -1,0 +1,19 @@
+#introScreen{
+    display: block;
+}
+#gameScreen{
+    display: none;
+}
+#resultsScreen{
+    display: none;
+}
+#question {
+    font-size: 20px;
+}
+.option {
+    padding: 20px;
+    background: blue;
+    margin: 10px;
+    font-size: 20px;
+    color: yellow;
+}
