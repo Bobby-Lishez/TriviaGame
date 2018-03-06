@@ -124,6 +124,7 @@ $(".option").click(function(event){
 //function to start a new game
 $(".start").click(function(){
     //reset the scores and asked questions
+    qCount = 0;
     score = 0;
     wrong = 0;
     asked = [];
