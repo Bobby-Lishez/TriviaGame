@@ -8,6 +8,8 @@ var $introScreen = $("#introScreen"),
     $resultsScreen = $("#resultsScreen"),
     $timer = $("#timer"),
     $question = $("#question"),
+    $count = $("#count"),
+    $category = $("#category"),
     $score = $("#score"),
     $wrong = $("#wrong")
     $a = $("#1"),
@@ -21,6 +23,8 @@ var $introScreen = $("#introScreen"),
     //variables for our time-and-record-keeping
 var intervalID,
     timer = 15,
+    qCount = 0,
+    category = ""
     asked = [],
     activeQ = false;
     correctAns = 0;
@@ -33,6 +37,9 @@ function getQuestion() {
     if (asked.indexOf(random) === -1) {
         //mark the chosen question as having been asked this game
         asked.push(random);
+        qCount ++;
+        $count.text(qCount);
+        $timer.css({"background": "green", "color": "white"});
         //then query the API for a the question whose id matches the chosen number
         $.ajax({
             url: queryURL + random,
@@ -40,6 +47,7 @@ function getQuestion() {
         }).then(function(response) {
         correctAns = response[0].answers;
         //update the screen with the question
+        $category.text("Category: " + response[0].category.name);
         $question.text(response[0].question);
         $1.text(response[0].option1);
         $2.text(response[0].option2);
@@ -58,6 +66,7 @@ function getQuestion() {
 function incorrect(int) {
     //stop the timer 
     clearInterval(intervalID);
+    $category.text("Incorrect!");
     //increment the wrong guesses counter
     wrong ++;
     //if we weren't sent here by a timeout, highlight the incorrect guess in red
@@ -77,6 +86,7 @@ function incorrect(int) {
 function correct(int) {
     //stop the timer
     clearInterval(intervalID);
+    $category.text("Correct!");
     //increment the score counter
     score ++;
     //highlight the correct guess in green
@@ -89,6 +99,8 @@ function correct(int) {
 function count() {
     timer --;
     $timer.text(timer);
+    if (timer <11) {$timer.css({"background": "yellow", "color": "black"});}
+    if (timer <6) {$timer.css({"background": "red", "color": "white"});}
     if (timer <1) {incorrect(0);}
 }
 function endgame () {

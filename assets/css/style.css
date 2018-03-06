@@ -1,3 +1,9 @@
+body {
+    background: url("../images/space.jpg");
+}
+#screens{
+    margin-top: 50px;
+}
 #introScreen{
     display: block;
 }
@@ -6,6 +12,12 @@
 }
 #resultsScreen{
     display: none;
+}
+#timer{
+    font-size: 20px;
+    background: green;
+    color: white;
+    padding: 2px;
 }
 #question {
     font-size: 20px;

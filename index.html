@@ -11,15 +11,17 @@
 </head>
 <body>
     <div class = "container">
-        <div class = "card">
+        <div id = "screens" class = "card">
             <div class = "card-header text-center">
-                <h1>Expert Trivia</h1>
+                <h1>A Most Trivial Quiz</h1>
+                <p>Powered by Qriusity. <a href = "https://qriusity.com/">https://qriusity.com/</a></p>
             </div>
             <div id = "introScreen" class = "card-body text-center">
                 <button id = "go" class = "start">Go</button>
             </div>
             <div id = "gameScreen" class = "card-body text-center">
                 <div id = "timerDiv">Time left: <span id = "timer"></span></div>
+                <div id = "cat/count">Question #<span id = "count"></span> of 10. <span id = "category"></span></div>
                 <div id = "question">Question goes here.</div>
                 <div class = "option" id = "1" >A: <span id = "option1"></span></div>
                 <div class = "option" id = "2" >B: <span id = "option2"></span></div>
